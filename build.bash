@@ -3,10 +3,10 @@
 set -e -u -o pipefail
 
 _main() {
-	git clone --shared /workspace /build/greenplum-workspace
-	cd /build/greenplum-workspace
-	env LDFLAGS='-fuse-ld=gold -Wl,--threads' cmake -GNinja -H. -B/build/build
-	ninja -C /build/build
+	local build_dir
+	readonly build_dir=$1
+	env LDFLAGS='-fuse-ld=gold -Wl,--threads' cmake -GNinja -H. -B"${build_dir}"
+	ninja -C "${build_dir}"
 }
 
 _main "$@"

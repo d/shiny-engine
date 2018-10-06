@@ -26,7 +26,7 @@ create_container() {
 		--volume "${workspace}":/workspace:ro \
 		--env CCACHE_DIR=/ccache \
 		"${image_id}" \
-		/workspace/build.bash
+		/workspace/clone-and-build.bash
 }
 
 _main "$@"
