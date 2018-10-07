@@ -1,4 +1,6 @@
 sudo: false
 language: cpp
 
-script: ci/shellcheck.bash
+script:
+  - ci/shellcheck.bash
+  - ./build.bash build
