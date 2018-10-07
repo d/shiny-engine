@@ -1,4 +1,16 @@
 sudo: false
 language: cpp
 
-script: ci/shellcheck.bash
+cache: ccache
+
+addons:
+  apt:
+    packages:
+      - ninja-build
+
+script:
+  - ci/shellcheck.bash
+  - ./build.bash build
+
+after_script:
+  - ccache -s
